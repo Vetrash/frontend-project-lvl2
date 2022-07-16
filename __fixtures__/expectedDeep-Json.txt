@@ -1,0 +1,123 @@
+[
+ {
+  "key": "common",
+  "status": "parent",
+  "child": [
+   {
+    "key": "follow",
+    "status": "added",
+    "valueOld": null,
+    "valueNow": false
+   },
+   {
+    "key": "setting1",
+    "status": "unchanged",
+    "valueOld": "Value 1"
+   },
+   {
+    "key": "setting2",
+    "status": "removed",
+    "valueOld": 200,
+    "valueNow": null
+   },
+   {
+    "key": "setting3",
+    "status": "updated",
+    "valueOld": true,
+    "valueNow": null
+   },
+   {
+    "key": "setting4",
+    "status": "added",
+    "valueOld": null,
+    "valueNow": "blah blah"
+   },
+   {
+    "key": "setting5",
+    "status": "added",
+    "valueOld": null,
+    "valueNow": {
+     "key5": "value5"
+    }
+   },
+   {
+    "key": "setting6",
+    "status": "parent",
+    "child": [
+     {
+      "key": "doge",
+      "status": "parent",
+      "child": [
+       {
+        "key": "wow",
+        "status": "updated",
+        "valueOld": "",
+        "valueNow": "so much"
+       }
+      ]
+     },
+     {
+      "key": "key",
+      "status": "unchanged",
+      "valueOld": "value"
+     },
+     {
+      "key": "ops",
+      "status": "added",
+      "valueOld": null,
+      "valueNow": "vops"
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "key": "group1",
+  "status": "parent",
+  "child": [
+   {
+    "key": "baz",
+    "status": "updated",
+    "valueOld": "bas",
+    "valueNow": "bars"
+   },
+   {
+    "key": "foo",
+    "status": "unchanged",
+    "valueOld": "bar"
+   },
+   {
+    "key": "nest",
+    "status": "updated",
+    "valueOld": {
+     "key": "value"
+    },
+    "valueNow": "str"
+   }
+  ]
+ },
+ {
+  "key": "group2",
+  "status": "removed",
+  "valueOld": {
+   "abc": 12345,
+   "deep": {
+    "id": 45
+   }
+  },
+  "valueNow": null
+ },
+ {
+  "key": "group3",
+  "status": "added",
+  "valueOld": null,
+  "valueNow": {
+   "deep": {
+    "id": {
+     "number": 45
+    }
+   },
+   "fee": 100500
+  }
+ }
+]

@@ -1,48 +1,52 @@
 import fs from 'fs';
 import path from 'path';
+import _ from 'lodash';
+import parser from './parsers.js';
+import formaters from './formatters/index.js';
+import isObject from './isObject.js';
 
 const getData = (filePath) => {
   const normalizePath = path.resolve('__fixtures__', filePath);
   const dataFile = fs.readFileSync(normalizePath, 'utf-8');
-  const parseData = JSON.parse(dataFile);
+  const type = path.extname(normalizePath).slice(1);
+  const parseData = parser(dataFile, type);
   return parseData;
 };
 
-const getDiff = (filePath1, filePath2) => {
+const diffСonstructor = (data1, data2) => {
+  const getDifference = (arr1, arr2, key) => {
+    if (!(key in arr1)) {
+      return {
+        key, status: 'added', valueOld: null, valueNow: arr2[key],
+      };
+    }
+    if (!(key in arr2)) {
+      return {
+        key, status: 'removed', valueOld: arr1[key], valueNow: null,
+      };
+    }
+    if (isObject(arr1[key]) && isObject(arr2[key])) {
+      return { key, status: 'parent', child: diffСonstructor(arr1[key], arr2[key]) };
+    }
+    if (arr1[key] !== arr2[key]) {
+      return {
+        key, status: 'updated', valueOld: arr1[key], valueNow: arr2[key],
+      };
+    }
+    return { key, status: 'unchanged', valueOld: arr1[key] };
+  };
+  const fusionKeys = _.union(Object.keys(data1), Object.keys(data2));
+  const sortKeys = fusionKeys.sort();
+  const differences = sortKeys.map((key) => getDifference(data1, data2, key));
+  return differences;
+};
+
+const getDiff = (filePath1, filePath2, format = 'stylish') => {
   const dataFile1 = getData(filePath1);
   const dataFile2 = getData(filePath2);
-  const entriesFile1 = Object.entries(dataFile1);
-  const entriesFile2 = Object.entries(dataFile2);
-  const diff = [];
-
-  const sortDiff = (a, b) => {
-    if (a[2] < b[2]) { return -1; }
-    if (a[2] > b[2]) { return 1; }
-    return 0;
-  };
-
-  entriesFile1.forEach((key) => {
-    const namePos = `+ ${key[0]}`;
-    const nameNeg = `- ${key[0]}`;
-    if (key[0] in dataFile2) {
-      if (dataFile1[key[0]] === dataFile2[key[0]]) {
-        diff.push(`  ${key[0]}: ${dataFile1[key[0]]}`);
-      } else {
-        diff.push(`${nameNeg}: ${dataFile1[key[0]]}`);
-        diff.push(`${namePos}: ${dataFile2[key[0]]}`);
-      }
-    } else {
-      diff.push(`${nameNeg}: ${dataFile1[key[0]]}`);
-    }
-  });
-
-  entriesFile2.forEach((key) => {
-    const namePos = `+ ${key[0]}`;
-    if (!(key[0] in dataFile1)) {
-      diff.push(`${namePos}: ${dataFile2[key[0]]}`);
-    }
-  });
-  diff.sort(sortDiff);
-  return `{\n${diff.join('\n')}\n}`;
+  const differences = diffСonstructor(dataFile1, dataFile2);
+  const solution = formaters(differences, format);
+  console.log(solution);
+  return solution;
 };
 export default getDiff;

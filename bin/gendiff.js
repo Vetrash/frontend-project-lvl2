@@ -11,8 +11,8 @@ program
   .version('0.8.0')
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format')
-  .action((url1, url2) => {
-    getDiff(url1, url2);
+  .action((url1, url2, options) => {
+    getDiff(url1, url2, options.format);
   });
 
 program.parse(process.argv);
