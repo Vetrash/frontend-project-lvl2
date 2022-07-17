@@ -41,17 +41,12 @@ const diffСonstructor = (data1, data2) => {
   return differences;
 };
 
-const getDiff = (filePath1, filePath2, format = 'stylish') => {
+const getDiff = (filePath1, filePath2, format = undefined) => {
+  if (format === undefined) { return ''; }
   const dataFile1 = getData(filePath1)[0];
   const dataFile2 = getData(filePath2)[0];
   const differences = diffСonstructor(dataFile1, dataFile2);
   const solution = formaters(differences, format);
-  if (solution.length < 1) {
-    console.log(dataFile1);
-    console.log(dataFile2);
-    console.log(getData(filePath1)[1]);
-    console.log(differences);
-  }
   return solution;
 };
 export default getDiff;
