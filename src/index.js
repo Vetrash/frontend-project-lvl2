@@ -10,7 +10,7 @@ const getData = (filePath) => {
   const dataFile = fs.readFileSync(normalizePath, 'utf-8');
   const type = path.extname(normalizePath).slice(1);
   const parseData = parser(dataFile, type);
-  return [parseData, type];
+  return parseData;
 };
 
 const diffСonstructor = (data1, data2) => {
@@ -41,10 +41,9 @@ const diffСonstructor = (data1, data2) => {
   return differences;
 };
 
-const getDiff = (filePath1, filePath2, format = undefined) => {
-  if (format === undefined) { return ''; }
-  const dataFile1 = getData(filePath1)[0];
-  const dataFile2 = getData(filePath2)[0];
+const getDiff = (filePath1, filePath2, format = 'stylish') => {
+  const dataFile1 = getData(filePath1);
+  const dataFile2 = getData(filePath2);
   const differences = diffСonstructor(dataFile1, dataFile2);
   const solution = formaters(differences, format);
   return solution;
