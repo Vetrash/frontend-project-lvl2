@@ -46,8 +46,11 @@ const getDiff = (filePath1, filePath2, format = 'stylish') => {
   const dataFile2 = getData(filePath2)[0];
   const differences = diffСonstructor(dataFile1, dataFile2);
   const solution = formaters(differences, format);
-  if (getData(filePath1)[1] === 'yml') {
-    console.log(solution);
+  if (solution.length < 1) {
+    console.log(dataFile1);
+    console.log(dataFile2);
+    console.log(getData(filePath1)[1]);
+    console.log(differences);
   }
   return solution;
 };
