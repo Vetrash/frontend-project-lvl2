@@ -46,7 +46,6 @@ const getDiff = (filePath1, filePath2, format = 'stylish') => {
   const dataFile2 = getData(filePath2);
   const differences = diffСonstructor(dataFile1, dataFile2);
   const solution = formaters(differences, format);
-  console.log(solution);
   return solution;
 };
 export default getDiff;

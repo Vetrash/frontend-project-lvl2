@@ -1,7 +1,7 @@
 import { test, expect } from '@jest/globals';
 import fs from 'fs';
 import path from 'path';
-import getDiff from '../src/DiffLogic.js';
+import getDiff from '../src/index.js';
 
 test('Checking the Structure of a Response getDiff flat object -stylish', () => {
   const normPathFlat = path.resolve('__fixtures__', 'expectedFlat.txt');
