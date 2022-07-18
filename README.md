@@ -8,7 +8,7 @@ Gendiff может сравнивать структуру двух файлов
 
 
 ### Меню
-<img  src ='.src\img\menu.PNG'  alt='menu'>
+<img  src ='.\src\img\menu.PNG'  alt='menu'>
 
 `<type>` - plain, json, stylish <br>
 *Формат stylish является значением по умолчанию
