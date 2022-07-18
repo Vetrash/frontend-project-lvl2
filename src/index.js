@@ -6,7 +6,7 @@ import formaters from './formatters/index.js';
 import isObject from './isObject.js';
 
 const getData = (filePath) => {
-  const normalizePath = path.resolve('__fixtures__', filePath);
+  const normalizePath = filePath.includes('/') ? path.resolve(process.cwd(), filePath) : path.resolve(process.cwd(), '__fixtures__', filePath);
   const dataFile = fs.readFileSync(normalizePath, 'utf-8');
   const type = path.extname(normalizePath).slice(1);
   const parseData = parser(dataFile, type);

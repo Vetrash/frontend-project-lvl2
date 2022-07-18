@@ -12,7 +12,7 @@ program
   .arguments('<filepath1> <filepath2>')
   .option('-f, --format <type>', 'output format', 'stylish')
   .action((url1, url2, options) => {
-    getDiff(url1, url2, options.format);
+    console.log(getDiff(url1, url2, options.format));
   });
 
 program.parse(process.argv);

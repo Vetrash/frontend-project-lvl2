@@ -15,11 +15,11 @@ Gendiff может сравнивать структуру двух файлов
 
 ### Пример работы с плоским обьектом
 (type = stylish)
-<img  src ='.src\img\flat.PNG'  alt='flat'>
+<img  src ='.\src\img\flat.PNG'  alt='flat'>
 ### Пример работы с вложенными обьектами
 (type = stylish)
-<img  src ='.src\img\flatDeep.PNG'  alt='deep'>
+<img  src ='.\src\img\Deep.PNG'  alt='deep'>
 (type = plain)
-<img  src ='.src\img\plain.PNG'  alt='plain'>
+<img  src ='.\src\img\plain.PNG'  alt='plain'>
 (type = json)
-<img  src ='.src\img\json.PNG'  alt='plain'>
+<img  src ='.\src\img\json.PNG'  alt='plain'>
