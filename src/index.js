@@ -36,7 +36,7 @@ const diffСonstructor = (data1, data2) => {
     return { key, status: 'unchanged', valueOld: arr1[key] };
   };
   const fusionKeys = _.union(Object.keys(data1), Object.keys(data2));
-  const sortKeys = fusionKeys.sort();
+  const sortKeys = _.sortBy(fusionKeys);
   const differences = sortKeys.map((key) => getDifference(data1, data2, key));
   return differences;
 };
