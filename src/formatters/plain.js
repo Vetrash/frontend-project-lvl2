@@ -1,4 +1,4 @@
-import isObject from '../isObject.js';
+import isObject from '../utils/isObject.js';
 
 const stringify = (value) => {
   if (isObject(value)) return '[complex value]';
@@ -18,7 +18,7 @@ const treeСonstructor = (elem, parent = '') => {
     case 'unchanged':
       return null;
     default:
-      throw new Error('invalid status');
+      throw new Error(`plain does not have an instruction for working with the status ${elem.status}`);
   }
 };
 

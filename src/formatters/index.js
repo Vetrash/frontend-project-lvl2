@@ -7,5 +7,14 @@ const typeFormat = {
   plain: (diff) => plain(diff),
   json: (diff) => json(diff),
 };
-const formaters = (difference, format) => typeFormat[format](difference);
+const formaters = (difference, format) => {
+  switch (format) {
+    case 'stylish':
+    case 'plain':
+    case 'json':
+      return typeFormat[format](difference);
+    default:
+      throw new Error(`Unknown format ${format}`);
+  }
+};
 export default formaters;

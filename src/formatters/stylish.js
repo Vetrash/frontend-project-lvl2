@@ -1,4 +1,4 @@
-import isObject from '../isObject.js';
+import isObject from '../utils/isObject.js';
 
 const tabulator = (deep) => '    '.repeat(deep);
 
@@ -22,7 +22,7 @@ const treeСonstructor = (elem, deep) => {
     case 'parent':
       return `  ${tabulator(deep)}  ${elem.key}: {\n${elem.child.map((element) => treeСonstructor(element, deep + 1)).join('\n')}\n  ${tabulator(deep)}  }`;
     default:
-      throw new Error('invalid status');
+      throw new Error(`stylish does not have an instruction for working with the status ${elem.status}`);
   }
 };
 

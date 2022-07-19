@@ -8,18 +8,18 @@ Gendiff может сравнивать структуру двух файлов
 
 
 ### Меню
-<img  src ='.\src\img\menu.PNG'  alt='menu'>
+<img  src ='.\img\menu.PNG'  alt='menu'>
 
 `<type>` - plain, json, stylish <br>
 *Формат stylish является значением по умолчанию
 
 ### Пример работы с плоским обьектом
 (type = stylish)
-<img  src ='.\src\img\flat.PNG'  alt='flat'>
+<img  src ='.\img\flat.PNG'  alt='flat'>
 ### Пример работы с вложенными обьектами
 (type = stylish)
-<img  src ='.\src\img\Deep.PNG'  alt='deep'>
+<img  src ='.\img\Deep.PNG'  alt='deep'>
 (type = plain)
-<img  src ='.\src\img\plain.PNG'  alt='plain'>
+<img  src ='.\img\plain.PNG'  alt='plain'>
 (type = json)
-<img  src ='.\src\img\json.PNG'  alt='plain'>
+<img  src ='.\img\json.PNG'  alt='plain'>

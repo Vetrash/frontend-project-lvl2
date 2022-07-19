@@ -5,6 +5,14 @@ const parsersData = {
   yaml: YAML.load,
   yml: YAML.load,
 };
-const parser = (data, format) => parsersData[format](data);
-
+const parser = (data, format) => {
+  switch (format) {
+    case 'json':
+    case 'yaml':
+    case 'yml':
+      return parsersData[format](data);
+    default:
+      throw new Error(`Unknown format ${format}`);
+  }
+};
 export default parser;
